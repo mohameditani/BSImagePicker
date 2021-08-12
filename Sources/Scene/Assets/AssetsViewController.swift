@@ -128,6 +128,17 @@ class AssetsViewController: UIViewController {
         }
     }
     
+    func select(asset: PHAsset) {
+        let index = fetchResult.index(of: asset)
+        guard index != NSNotFound else { return }
+        let indexPath = IndexPath(item: index, section: 0)
+        collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .centeredVertically)
+
+        for indexPath in collectionView.indexPathsForSelectedItems ?? [] {
+            updateSelectionIndexForCell(at: indexPath)
+        }
+    }
+    
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         updateCollectionViewLayout(for: traitCollection)

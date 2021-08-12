@@ -148,6 +148,12 @@ import Photos
         updatedDoneButton()
     }
     
+    public func select(asset: PHAsset) {
+        assetsViewController.select(asset: asset)
+        assetStore.append(asset)
+        updatedDoneButton()
+    }
+    
     func updatedDoneButton() {
         doneButton.title = assetStore.count > 0 ? doneButtonTitle + " (\(assetStore.count))" : doneButtonTitle
       
